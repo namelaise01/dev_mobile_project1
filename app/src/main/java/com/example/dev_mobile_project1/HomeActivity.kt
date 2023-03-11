@@ -20,7 +20,7 @@ class HomeActivity : BaseActivity() {
         })
 
         buttonProduits.setOnClickListener(View.OnClickListener {
-            val intent = Intent(application, InfoStudentActivity::class.java)
+            val intent = Intent(application, CategoryActivity::class.java)
             startActivity(intent)
         })
 

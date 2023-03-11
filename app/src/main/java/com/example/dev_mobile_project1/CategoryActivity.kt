@@ -9,25 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
-import javax.security.auth.callback.Callback
 
 class CategoryActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
-        setHeaderTxt("Infos")
+        setHeaderTxt("Rayons")
         showBack()
 
         val categories = arrayListOf<Category>()
 
         val recyclerviewStudents = findViewById<RecyclerView>(R.id.recyclerviewCategory)
         recyclerviewStudents.layoutManager = LinearLayoutManager(this)
-        val studentAdapter = CategoryAdapter(categories)
-        recyclerviewStudents.adapter = studentAdapter
+        val categoryAdapter = CategoryAdapter(categories)
+        recyclerviewStudents.adapter = categoryAdapter
 
         val okHttpClient: OkHttpClient = OkHttpClient.Builder().build()
-        val mRequestUrl = "https://www.ugarit.online/epsi/list.json"
+        val mRequestUrl = "https://www.ugarit.online/epsi/categories.json"
         val request =
             Request.Builder().url(mRequestUrl).cacheControl(CacheControl.FORCE_NETWORK).build()
 
@@ -40,15 +39,15 @@ class CategoryActivity : BaseActivity() {
 
                     for (i in 0 until jsArrayCategory.length()) {
                         val jsCategory = jsArrayCategory.getJSONObject(i)
-                        val categorie = Category(
+                        val category = Category(
                             jsCategory.optString("category_id", "Not found"),
                             jsCategory.optString("title", "Not found"),
                             jsCategory.optString("products_url", "Not found"),
                         )
-                        categories.add(categorie)
+                        categories.add(category)
                     }
                     runOnUiThread(Runnable {
-                        studentAdapter.notifyDataSetChanged()
+                        categoryAdapter.notifyDataSetChanged()
                     })
 
                     Log.e("WS", data)

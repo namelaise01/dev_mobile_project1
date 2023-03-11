@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_gravity="center"
     tools:context=".DetailStudentActivity">
 
     <include
@@ -12,19 +14,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/studentAvatar"
+
+    <LinearLayout
+        android:id="@+id/contentLayoutDetailStudent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="153dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/imageDetailStudent"
+            android:layout_width="261dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/hackerlogo" />
+
+        <LinearLayout
+            android:id="@+id/contentLayoutDetailStudentTxt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/studentInfos"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="INFO ÉTUDIANT:" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/studentInfos"
-        android:layout_width="wrap_content"
+        android:id="@+id/linkEpsi"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="424dp" />
+        android:text="https://www.epsi.fr/" />
+
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.example.dev_mobile_project1
 
-
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -10,13 +9,13 @@ import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
 
-class CategoryActivity() : BaseActivity() {
+class ProductsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
         Log.i("COUNIA MANMANW", productLink)
-        setHeaderTxt("Rayons")
+        setHeaderTxt("Boissons")
         showBack()
 
         val categories = arrayListOf<Category>()
@@ -27,7 +26,7 @@ class CategoryActivity() : BaseActivity() {
         recyclerviewStudents.adapter = categoryAdapter
 
         val okHttpClient: OkHttpClient = OkHttpClient.Builder().build()
-        val mRequestUrl = "https://www.ugarit.online/epsi/categories.json"
+        val mRequestUrl = "https://www.ugarit.online/epsi/drink.json"
         val request =
             Request.Builder().url(mRequestUrl).cacheControl(CacheControl.FORCE_NETWORK).build()
 
@@ -51,7 +50,7 @@ class CategoryActivity() : BaseActivity() {
                         categoryAdapter.notifyDataSetChanged()
                     })
 
-                    Log.e("WS", data)
+                
                 }
             }
 

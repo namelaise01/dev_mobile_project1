@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Dev_mobile_project1</string>
+    <string name="info_student">Nicolas\nAMELAISE\nGroupe 1\nnicolas.amelaise@epsi.fr</string>
+    <string name="info_student_title">INFO ÉTUDIANT:</string>
+    <string name="epsi_link">https://www.epsi.fr/</string>
+
 </resources>

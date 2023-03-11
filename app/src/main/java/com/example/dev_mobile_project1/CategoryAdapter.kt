@@ -1,6 +1,6 @@
 package com.example.dev_mobile_project1
 
-import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
-class CategoryAdapter(val categories: ArrayList<Category>) :
-    RecyclerView.Adapter<CategoryAdapter.ViewHolder>(){
+class CategoryAdapter(val categories: ArrayList<Category>, val mcontext: Context) :
+    RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.cell_category, viewGroup, false)
@@ -28,9 +28,8 @@ class CategoryAdapter(val categories: ArrayList<Category>) :
 
 
         holder.contentLayout.setOnClickListener(View.OnClickListener {
-
-            Toast.makeText(holder.contentLayout.context, category.category_id, Toast.LENGTH_SHORT)
-                .show()
+            BaseActivity().productLink = "gfezhniufhnfjhkfherkjh"
+            mcontext.startActivity(Intent(mcontext,  ProductsActivity::class.java))
         })
     }
 
@@ -38,7 +37,7 @@ class CategoryAdapter(val categories: ArrayList<Category>) :
         return categories.size
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textViewName: TextView = view.findViewById<TextView>(R.id.textViewCategory)
 
         //   val textViewEmail = view.findViewById<TextView>(R.id.textViewEmail)
@@ -46,6 +45,21 @@ class CategoryAdapter(val categories: ArrayList<Category>) :
         ///  val textViewZipcode = view.findViewById<TextView>(R.id.textViewZipcode)
         //  val textViewPhone = view.findViewById<TextView>(R.id.textViewPhone)
         //  val imageViewStudent = view.findViewById<ImageView>(R.id.imageViewStudent)
-        val contentLayout: LinearLayout = view.findViewById<LinearLayout>(R.id.contentLayout)
+        val contentLayout: LinearLayout
+
+        val intent: Intent? = null
+
+        //  var itemImage: ImageView
+        // var itemTitle: TextView
+        // var itemDetail: TextView
+        init {
+            contentLayout = view.findViewById<LinearLayout>(R.id.contentLayout)
+            //   itemTitle = itemView.findViewById(R.id.main_title_view)
+            //  itemDetail = itemView.findViewById(R.id.main_description_view)
+
+            itemView.setOnClickListener {
+                mcontext.startActivity(Intent(mcontext,  CategoryActivity::class.java))
+            }
+        }
     }
 }

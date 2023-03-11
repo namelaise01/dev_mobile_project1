@@ -38,18 +38,34 @@
             <TextView
                 android:id="@+id/studentInfos"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:text="INFO ÉTUDIANT:" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/info_student_title" />
+
+            <TextView
+                android:id="@+id/editTextTextMultiLine2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contextClickable="false"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:layout_gravity="center"
+                android:text="@string/info_student" />
+
+            <TextView
+                android:id="@+id/linkEpsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contextClickable="true"
+                android:layout_gravity="center"
+                android:text="@string/epsi_link"
+                android:textColor="#2196F3" />
 
         </LinearLayout>
 
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/linkEpsi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="https://www.epsi.fr/" />
 
 </LinearLayout>

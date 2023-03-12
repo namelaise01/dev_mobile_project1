@@ -15,7 +15,6 @@ class CategoryActivity() : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
-        Log.i("COUNIA MANMANW", productLink)
         setHeaderTxt("Rayons")
         showBack()
 

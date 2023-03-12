@@ -25,14 +25,17 @@
 
         <ImageView
             android:id="@+id/imageDetailStudent"
-            android:layout_width="261dp"
+            android:layout_width="300dp"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:minHeight="250dp"
             app:srcCompat="@drawable/hackerlogo" />
 
         <LinearLayout
             android:id="@+id/contentLayoutDetailStudentTxt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
             <TextView
@@ -40,27 +43,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textAlignment="center"
                 android:text="@string/info_student_title" />
 
             <TextView
                 android:id="@+id/editTextTextMultiLine2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:contextClickable="false"
                 android:ems="10"
-                android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:singleLine="false"
-                android:layout_gravity="center"
+                android:textAlignment="center"
                 android:text="@string/info_student" />
 
             <TextView
                 android:id="@+id/linkEpsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contextClickable="true"
                 android:layout_gravity="center"
+                android:contextClickable="true"
                 android:text="@string/epsi_link"
+                android:textAlignment="center"
                 android:textColor="#2196F3" />
 
         </LinearLayout>

@@ -1,7 +1,6 @@
 package com.example.dev_mobile_project1
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,45 +11,50 @@ import java.io.IOException
 class ProductsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_category)
+        setContentView(R.layout.activity_products)
 
-        Log.i("COUNIA MANMANW", productLink)
-        setHeaderTxt("Boissons")
+        var productLink: String = ""
+        var productName: String = ""
+
+        if (intent.extras != null) {
+            productLink = intent.extras!!.getString("productLink", "");
+            productName = intent.extras!!.getString("title", "");
+        }
+
+        setHeaderTxt(productName)
         showBack()
 
-        val categories = arrayListOf<Category>()
 
-        val recyclerviewStudents = findViewById<RecyclerView>(R.id.recyclerviewCategory)
-        recyclerviewStudents.layoutManager = LinearLayoutManager(this)
-        val categoryAdapter = CategoryAdapter(categories, this)
-        recyclerviewStudents.adapter = categoryAdapter
+        val products = arrayListOf<Product>()
+
+        val recyclerviewProducts = findViewById<RecyclerView>(R.id.recyclerviewProduct)
+        recyclerviewProducts.layoutManager = LinearLayoutManager(this)
+        val productAdapter = ProductAdapter(products, this)
+        recyclerviewProducts.adapter = productAdapter
 
         val okHttpClient: OkHttpClient = OkHttpClient.Builder().build()
-        val mRequestUrl = "https://www.ugarit.online/epsi/drink.json"
         val request =
-            Request.Builder().url(mRequestUrl).cacheControl(CacheControl.FORCE_NETWORK).build()
+            Request.Builder().url(productLink).cacheControl(CacheControl.FORCE_NETWORK).build()
 
         okHttpClient.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
                 val data = response.body?.string()
                 if (data != null) {
-                    val jsCategories = JSONObject(data)
-                    val jsArrayCategory = jsCategories.getJSONArray("items")
+                    val jsProduct = JSONObject(data)
+                    val jsArrayProducts = jsProduct.getJSONArray("items")
 
-                    for (i in 0 until jsArrayCategory.length()) {
-                        val jsCategory = jsArrayCategory.getJSONObject(i)
-                        val category = Category(
-                            jsCategory.optString("category_id", "Not found"),
-                            jsCategory.optString("title", "Not found"),
-                            jsCategory.optString("products_url", "Not found"),
+                    for (i in 0 until jsArrayProducts.length()) {
+                        val jsProduct = jsArrayProducts.getJSONObject(i)
+                        val product = Product(
+                            jsProduct.optString("name", "Not found"),
+                            jsProduct.optString("description", "Not found"),
+                            jsProduct.optString("picture_url", "Not found"),
                         )
-                        categories.add(category)
+                        products.add(product)
                     }
                     runOnUiThread(Runnable {
-                        categoryAdapter.notifyDataSetChanged()
+                        productAdapter.notifyDataSetChanged()
                     })
-
-                
                 }
             }
 
@@ -59,7 +63,6 @@ class ProductsActivity : BaseActivity() {
                     Toast.makeText(application, e.message, Toast.LENGTH_SHORT).show()
                 })
             }
-
         })
     }
 }

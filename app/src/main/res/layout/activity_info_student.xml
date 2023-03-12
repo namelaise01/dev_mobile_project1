@@ -15,8 +15,8 @@
     <Button
         android:id="@+id/etudiantInfoButton"
         style="@style/Project_1_Button"
-        android:text="Etudiants 1"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="433dp" />
+        android:text="Etudiant 1"
+        android:layout_width="180sp"
+        android:layout_height="60sp" />
 
 </LinearLayout>

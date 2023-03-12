@@ -1,9 +1,11 @@
 package com.example.dev_mobile_project1
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
@@ -13,12 +15,15 @@ class ProductsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_products)
 
+
         var productLink: String = ""
         var productName: String = ""
 
         if (intent.extras != null) {
-            productLink = intent.extras!!.getString("productLink", "");
+            val image = findViewById<ImageView>(R.id.imageViewProduct)
+            productLink = intent.extras!!.getString("productLink", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj0AEwRdUSWfs2LPDlLKn9kI-KvverDKfy0w&usqp=CAU");
             productName = intent.extras!!.getString("title", "");
+          //  Picasso.get().load(productLink).into(image);
         }
 
         setHeaderTxt(productName)

@@ -1,6 +1,7 @@
 package com.example.dev_mobile_project1
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,14 +24,15 @@ class ProductAdapter(val products: ArrayList<Product>, val mcontext: Context) :
         val product = products.get(position)
         var productLink: String = product.picture_url
         holder.textViewProductName.text = product.name
-        holder.textViewProductDescription.text = product.description
+        holder.textViewProductDescription.text = product.description + "..."
         Picasso.get().load(productLink).into(holder.imageProduct)
 
         holder.contentLayout.setOnClickListener(View.OnClickListener {
-            //val intent =Intent(mcontext,  ProductsActivity::class.java)
-            ///intent.putExtra("title", category.title)
-           //intent.putExtra("productLink", category.products_url)
-           // mcontext.startActivity(intent)
+            val intent = Intent(mcontext, DetailProductActivity::class.java)
+            intent.putExtra("name", product.name)
+            intent.putExtra("description", product.description)
+            intent.putExtra("picture_url", product.picture_url)
+            mcontext.startActivity(intent)
         })
     }
 

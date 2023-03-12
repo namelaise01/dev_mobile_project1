@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
     <Button
         android:id="@+id/buttonInfo"
         style="@style/Project_1_Button"
@@ -29,8 +30,5 @@
         android:text="Produits"
         tools:layout_editor_absoluteX="133dp"
         tools:layout_editor_absoluteY="433dp" />
-
-
     </LinearLayout>
-
 </LinearLayout>

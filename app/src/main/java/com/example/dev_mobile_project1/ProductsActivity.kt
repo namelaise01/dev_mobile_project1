@@ -23,7 +23,6 @@ class ProductsActivity : BaseActivity() {
             val image = findViewById<ImageView>(R.id.imageViewProduct)
             productLink = intent.extras!!.getString("productLink", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj0AEwRdUSWfs2LPDlLKn9kI-KvverDKfy0w&usqp=CAU");
             productName = intent.extras!!.getString("title", "");
-          //  Picasso.get().load(productLink).into(image);
         }
 
         setHeaderTxt(productName)
